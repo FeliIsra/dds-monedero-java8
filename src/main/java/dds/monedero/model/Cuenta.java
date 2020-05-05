@@ -37,7 +37,9 @@ public class Cuenta {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
 
-    movimientos.add(new Deposito(LocalDate.now(), monto));
+    Deposito deposito  = new Deposito(LocalDate.now(), monto);
+    movimientos.add(deposito);
+    setSaldo(deposito.realizarSobre(this));
   }
 
   public void sacar(double monto) {
@@ -52,7 +54,10 @@ public class Cuenta {
       throw new MaximoExtraccionDiarioException("No puede extraer mas de $ " + 1000
           + " diarios, límite: " + limite());
     }
-    movimientos.add(new Extraccion(LocalDate.now(), monto));
+
+    Extraccion extraccion  = new Extraccion(LocalDate.now(), monto);
+    movimientos.add(extraccion);
+    setSaldo(extraccion.realizarSobre(this));
   }
 
   public double getMontoExtraidoA(LocalDate fecha) {

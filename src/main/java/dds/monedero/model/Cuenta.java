@@ -33,7 +33,7 @@ public class Cuenta {
       throw new MontoNegativoException(monto + ": el monto a ingresar debe ser un valor positivo");
     }
 
-    if (sePuedeDepositar()) {
+    if (!sePuedeDepositar()) {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
 

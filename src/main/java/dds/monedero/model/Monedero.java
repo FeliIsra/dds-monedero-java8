@@ -52,7 +52,7 @@ public class Monedero {
 
     if (superaLimite(monto)) {
       throw new MaximoExtraccionDiarioException("No puede extraer mas de $ " + 1000
-          + " diarios, límite: " + limite());
+              + " diarios, límite: " + limite());
     }
 
     Extraccion extraccion  = new Extraccion(LocalDate.now(), monto);

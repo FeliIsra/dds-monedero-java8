@@ -13,28 +13,13 @@ public abstract class Movimiento {
     this.monto = monto;
   }
 
-  public double getMonto() {
-    return monto;
-  }
+  public double getMonto() { return monto; }
 
-  public LocalDate getFecha() {
-    return fecha;
-  }
+  public LocalDate getFecha() { return fecha; }
 
-  public boolean fueRealizado(LocalDate fecha){
-    return esDeLaFecha(fecha);
-  }
+  public boolean fueRealizado(LocalDate fecha){ return esDeLaFecha(fecha); }
 
-
-  public boolean esDeLaFecha(LocalDate fecha) {
-    return this.fecha.equals(fecha);
-  }
-
-
-  public void agregateA(Cuenta cuenta) {
-    cuenta.setSaldo(calcularValor(cuenta));
-    cuenta.agregarMovimiento(fecha, monto, esDeposito);
-  }
+  public boolean esDeLaFecha(LocalDate fecha) { return this.fecha.equals(fecha); }
 
   abstract double calcularValor(Cuenta cuenta);
 

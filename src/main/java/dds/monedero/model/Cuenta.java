@@ -13,8 +13,7 @@ public class Cuenta {
 
   private double saldo;
   private List<Movimiento> movimientos = new ArrayList<>();
-  private Object Deposito;
-  private Object Extraccion;
+
 
   public Cuenta() {
     saldo = 0;
@@ -40,6 +39,7 @@ public class Cuenta {
     Deposito deposito  = new Deposito(LocalDate.now(), monto);
     movimientos.add(deposito);
     setSaldo(deposito.realizarSobre(saldo));
+
   }
 
   public void sacar(double monto) {
@@ -62,7 +62,7 @@ public class Cuenta {
 
   public double getMontoExtraidoA(LocalDate fecha) {
     return getMovimientos().stream()
-        .filter(movimiento -> movimiento.getClass().equals(Extraccion) && movimiento.esDeLaFecha(fecha))
+        .filter(movimiento -> movimiento.getClass().equals(Extraccion.class) && movimiento.esDeLaFecha(fecha))
         .mapToDouble(Movimiento::getMonto)
         .sum();
   }
@@ -83,8 +83,8 @@ public class Cuenta {
 
   private boolean sePuedeDepositar(){
     return getMovimientos().stream()
-            .filter(movimiento -> movimiento.getClass().equals(Deposito))
-            .count() >= 3;
+            .filter(movimiento -> movimiento.getClass().equals(Deposito.class))
+            .count() < 3;
   }
 
   private boolean puedeExtraer(double monto){ return getSaldo() - monto < 0; }

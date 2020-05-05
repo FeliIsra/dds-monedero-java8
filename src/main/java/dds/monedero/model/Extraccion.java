@@ -10,5 +10,4 @@ public class Extraccion extends Movimiento {
     public double realizarSobre(double saldo){ return saldo - getMonto(); }
 
 
-
 }

@@ -10,55 +10,55 @@ import dds.monedero.exceptions.MontoNegativoException;
 import dds.monedero.exceptions.SaldoMenorException;
 
 public class MonederoTest {
-  private Cuenta cuenta;
+  private Monedero monedero;
 
   @Before
   public void init() {
-    cuenta = new Cuenta();
+    monedero = new Monedero();
   }
 
   @Test
   public void Poner() {
-    cuenta.poner(1500);
-    Assert.assertEquals(1500, cuenta.getSaldo(), 0);
+    monedero.poner(1500);
+    Assert.assertEquals(1500, monedero.getSaldo(), 0);
   }
 
   @Test(expected = MontoNegativoException.class)
   public void PonerMontoNegativo() {
-    cuenta.poner(-1500);
+    monedero.poner(-1500);
   }
 
   @Test
   public void TresDepositos() {
-    cuenta.poner(1500);
-    cuenta.poner(456);
-    cuenta.poner(1900);
-    Assert.assertEquals(3, cuenta.getMovimientos().size());
+    monedero.poner(1500);
+    monedero.poner(456);
+    monedero.poner(1900);
+    Assert.assertEquals(3, monedero.getMovimientos().size());
   }
 
   @Test(expected = MaximaCantidadDepositosException.class)
   public void MasDeTresDepositos() {
-    cuenta.poner(1500);
-    cuenta.poner(456);
-    cuenta.poner(1900);
-    cuenta.poner(245);
+    monedero.poner(1500);
+    monedero.poner(456);
+    monedero.poner(1900);
+    monedero.poner(245);
   }
 
   @Test(expected = SaldoMenorException.class)
   public void ExtraerMasQueElSaldo() {
-    cuenta.setSaldo(90);
-    cuenta.sacar(1001);
+    monedero.setSaldo(90);
+    monedero.sacar(1001);
   }
 
   @Test(expected = MaximoExtraccionDiarioException.class)
   public void ExtraerMasDe1000() {
-    cuenta.setSaldo(5000);
-    cuenta.sacar(1001);
+    monedero.setSaldo(5000);
+    monedero.sacar(1001);
   }
 
   @Test(expected = MontoNegativoException.class)
   public void ExtraerMontoNegativo() {
-    cuenta.sacar(-500);
+    monedero.sacar(-500);
   }
 
 }

@@ -14,6 +14,7 @@ public class Cuenta {
   private double saldo = 0;
   private List<Movimiento> movimientos = new ArrayList<>();
   private Object Deposito;
+  private Object Extraccion;
 
   public Cuenta() {
     saldo = 0;
@@ -56,7 +57,7 @@ public class Cuenta {
 
   public double getMontoExtraidoA(LocalDate fecha) {
     return getMovimientos().stream()
-        .filter(movimiento -> !movimiento.isDeposito() && movimiento.getFecha().equals(fecha))
+        .filter(movimiento -> movimiento.getClass().equals(Extraccion) && movimiento.getFecha().equals(fecha))
         .mapToDouble(Movimiento::getMonto)
         .sum();
   }

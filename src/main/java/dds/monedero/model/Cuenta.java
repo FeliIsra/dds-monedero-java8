@@ -43,7 +43,7 @@ public class Cuenta {
     if (montoValido(monto)) {
       throw new MontoNegativoException(monto + ": el monto a ingresar debe ser un valor positivo");
     }
-    if (getSaldo() - monto < 0) {
+    if (puedeExtraer(monto)) {
       throw new SaldoMenorException("No puede sacar mas de " + getSaldo() + " $");
     }
     double montoExtraidoHoy = getMontoExtraidoA(LocalDate.now());
@@ -86,4 +86,6 @@ public class Cuenta {
             .filter(movimiento -> movimiento.getClass().equals(Deposito))
             .count() >= 3;
   }
+
+  private boolean puedeExtraer(double monto){ return getSaldo() - monto < 0; }
 }

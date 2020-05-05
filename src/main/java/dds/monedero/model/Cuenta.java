@@ -11,7 +11,7 @@ import dds.monedero.exceptions.SaldoMenorException;
 
 public class Cuenta {
 
-  private double saldo = 0;
+  private double saldo;
   private List<Movimiento> movimientos = new ArrayList<>();
   private Object Deposito;
   private Object Extraccion;
@@ -79,7 +79,7 @@ public class Cuenta {
     this.saldo = saldo;
   }
 
-  private boolean montoValido(double monto){ return monto > 0; }
+  private boolean montoValido(double monto){ return monto < 0; }
 
   private boolean sePuedeDepositar(){
     return getMovimientos().stream()

@@ -7,4 +7,8 @@ public class Extraccion extends Movimiento {
         super(fecha, monto);
     }
 
+    public double calcularValor(Cuenta cuenta){
+        return cuenta.getSaldo() - getMonto();
+    }
+
 }

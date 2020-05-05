@@ -17,8 +17,6 @@ public abstract class Movimiento {
 
   public LocalDate getFecha() { return fecha; }
 
-  public boolean fueRealizado(LocalDate fecha){ return esDeLaFecha(fecha); }
-
   public boolean esDeLaFecha(LocalDate fecha) { return this.fecha.equals(fecha); }
 
   abstract double calcularValor(Cuenta cuenta);

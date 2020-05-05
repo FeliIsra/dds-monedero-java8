@@ -78,4 +78,5 @@ public class Cuenta {
     this.saldo = saldo;
   }
 
+  private boolean montoValido(double monto){ return monto > 0; }
 }

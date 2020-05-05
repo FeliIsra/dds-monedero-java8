@@ -7,6 +7,6 @@ public class Deposito extends Movimiento{
         super(fecha, monto);
     }
 
-    public double realizarSobre(Cuenta cuenta){ return cuenta.getSaldo() + getMonto(); }
+    public double realizarSobre(double saldo){ return saldo + getMonto(); }
 
 }

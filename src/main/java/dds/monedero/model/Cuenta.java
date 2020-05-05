@@ -39,7 +39,7 @@ public class Cuenta {
 
     Deposito deposito  = new Deposito(LocalDate.now(), monto);
     movimientos.add(deposito);
-    setSaldo(deposito.realizarSobre(this));
+    setSaldo(deposito.realizarSobre(getSaldo()));
   }
 
   public void sacar(double monto) {
@@ -57,7 +57,7 @@ public class Cuenta {
 
     Extraccion extraccion  = new Extraccion(LocalDate.now(), monto);
     movimientos.add(extraccion);
-    setSaldo(extraccion.realizarSobre(this));
+    setSaldo(extraccion.realizarSobre(getSaldo()));
   }
 
   public double getMontoExtraidoA(LocalDate fecha) {

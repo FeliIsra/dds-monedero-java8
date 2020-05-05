@@ -19,6 +19,6 @@ public abstract class Movimiento {
 
   public boolean esDeLaFecha(LocalDate fecha) { return this.fecha.equals(fecha); }
 
-  abstract double realizarSobre(Cuenta cuenta);
+  abstract double realizarSobre(double saldo);
 
 }

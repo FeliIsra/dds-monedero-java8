@@ -50,7 +50,7 @@ public class Cuenta {
       throw new SaldoMenorException("No puede sacar mas de " + getSaldo() + " $");
     }
 
-    if (!superaLimite(monto)) {
+    if (superaLimite(monto)) {
       throw new MaximoExtraccionDiarioException("No puede extraer mas de $ " + 1000
           + " diarios, límite: " + limite());
     }

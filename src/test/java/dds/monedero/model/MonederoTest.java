@@ -33,6 +33,7 @@ public class MonederoTest {
     cuenta.poner(1500);
     cuenta.poner(456);
     cuenta.poner(1900);
+    Assert.assertEquals(3, cuenta.getMovimientos().size());
   }
 
   @Test(expected = MaximaCantidadDepositosException.class)

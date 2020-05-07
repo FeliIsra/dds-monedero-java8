@@ -95,4 +95,8 @@ public class Monedero {
   }
 
   private  boolean superaLimite(double monto){ return monto > limite(); }
+
+  private boolean caca(double caca){
+    return caca > 3
+  }
 }
